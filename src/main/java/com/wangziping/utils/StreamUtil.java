@@ -13,6 +13,14 @@ import java.util.List;
 
 public class StreamUtil {
 
+	/**
+	 * @Title: readFile
+	 * @Description: TODO读取文件
+	 * @param is
+	 * @return
+	 * @throws IOException
+	 * @return: List<String>
+	 */
 	public static List<String> readFile(InputStream is) throws IOException {
 
 		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(is));
@@ -25,6 +33,15 @@ public class StreamUtil {
 		return arrayList;
 	}
 
+	/**
+	 * @Title: writeFile
+	 * @Description: TODO将文件写入磁盘
+	 * @param pathname
+	 * @param content
+	 * @param charset
+	 * @throws Exception
+	 * @return: void
+	 */
 	public static void writeFile(String pathname, String content, String charset) throws Exception {
 		File file = new File(pathname);
 		if (!file.getParentFile().exists()) {
