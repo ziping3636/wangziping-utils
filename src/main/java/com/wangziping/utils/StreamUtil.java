@@ -3,6 +3,7 @@ package com.wangziping.utils;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -31,6 +32,26 @@ public class StreamUtil {
 		}
 		bufferedReader.close();
 		return arrayList;
+	}
+
+	/**
+	 * @Title: readFile 
+	 * @Description: TODO读取文件
+	 * @param file
+	 * @param charset
+	 * @return
+	 * @throws IOException
+	 * @return: String
+	 */
+	public static String readFile(File file, String charset) throws IOException {
+		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(file), "utf8"));
+		StringBuffer stringBuffer = new StringBuffer();
+		String content = null;
+		while((content = bufferedReader.readLine()) != null) {
+			stringBuffer.append(content);
+		}
+		bufferedReader.close();
+		return stringBuffer.toString();
 	}
 
 	/**
