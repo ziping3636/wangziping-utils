@@ -2,8 +2,24 @@ package com.wangziping.utils;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class DateUtil {
+
+	public static String getDate(Integer startYear, Integer endYear) {
+		GregorianCalendar gregorianCalendar = new GregorianCalendar();
+		int year = randBetween(startYear, endYear);
+		gregorianCalendar.set(gregorianCalendar.YEAR, year);
+		int dayOfYear = randBetween(1, gregorianCalendar.getActualMaximum(gregorianCalendar.DAY_OF_YEAR));
+		gregorianCalendar.set(gregorianCalendar.DAY_OF_YEAR, dayOfYear);
+		return gregorianCalendar.get(gregorianCalendar.YEAR) + "-"
+				+ (gregorianCalendar.get(gregorianCalendar.MONTH) + 1) + "-"
+				+ gregorianCalendar.get(gregorianCalendar.DAY_OF_MONTH);
+	}
+
+	public static int randBetween(Integer startYear, Integer endYear) {
+		return startYear + (int) Math.round(Math.random() * (endYear - startYear));
+	}
 
 	/**
 	 * @Title: getEarly
@@ -55,7 +71,7 @@ public class DateUtil {
 	 * @return
 	 * @return: Date
 	 */
-	public static Date random(Date startDate, Date endDate) {
+	public static Date randomDate(Date startDate, Date endDate) {
 		long endTime = endDate.getTime();
 		long startTime = startDate.getTime();
 		long ultimateTime = (long) (Math.random() * (endTime - startTime + 1) + startTime);

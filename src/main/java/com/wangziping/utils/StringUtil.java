@@ -6,6 +6,14 @@ import java.util.regex.Pattern;
 
 public class StringUtil {
 
+	public static boolean isHttpUrl(String src) {
+		if (src.startsWith("http")) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	/**
 	 * @Title: hasLength
 	 * @Description: 判断源字符串是否有值, 空引号(空白字符串)也算没值
